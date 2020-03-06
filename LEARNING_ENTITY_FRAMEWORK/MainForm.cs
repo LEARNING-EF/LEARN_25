@@ -26,17 +26,21 @@ namespace LEARNING_ENTITY_FRAMEWORK
 				Models.Person person = null;
 
 				// **************************************************
-				person = new Models.Person();
-
-				person.FullName = "Ali Reza Alavi";
+				person =
+					new Models.Person
+					{
+						FullName = "Ali Reza Alavi",
+					};
 
 				databaseContext.People.Add(person);
 				// **************************************************
 
 				// **************************************************
-				person = new Models.Person();
-
-				person.FullName = "Dariush Tasdighi";
+				person =
+					new Models.Person
+					{
+						FullName = "Dariush Tasdighi",
+					};
 
 				//Models.Address address = new Models.Address();
 
@@ -46,11 +50,12 @@ namespace LEARNING_ENTITY_FRAMEWORK
 
 				//person.Address = address;
 
-				person.Address = new Models.Address();
-
-				person.Address.CityName = "Tehran";
-				person.Address.StateName = "Tehran";
-				person.Address.CountryName = "Iran";
+				person.Address = new Models.Address
+				{
+					CityName = "Tehran",
+					StateName = "Tehran",
+					CountryName = "Iran",
+				};
 
 				databaseContext.People.Add(person);
 				// **************************************************
@@ -66,7 +71,7 @@ namespace LEARNING_ENTITY_FRAMEWORK
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
@@ -103,7 +108,7 @@ namespace LEARNING_ENTITY_FRAMEWORK
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
@@ -130,6 +135,15 @@ namespace LEARNING_ENTITY_FRAMEWORK
 					.Where(current => current.Person.FullName.Contains("A"))
 					.ToList()
 					;
+
+				// در صورتی که من فهرست نشانی‌ها را می‌خواستم
+				// هر چند که بر روی اطلاعات اشخاص متناظر آن شرط نوشته ‌ام
+				// ولی دستور ذیل نیز صحیح می‌باشد
+				//var addresses =
+				//	databaseContext.Addresses
+				//	.Where(current => current.Person.FullName.Contains("A"))
+				//	.ToList()
+				//	;
 			}
 			catch (System.Exception ex)
 			{
@@ -140,7 +154,7 @@ namespace LEARNING_ENTITY_FRAMEWORK
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
